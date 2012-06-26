@@ -1,4 +1,6 @@
 chatty
 ======
 
-Chatty chat node.js socket.io based server with ArangoDB storage
+Chatty is a node.js experimental chat server based on socket.io with ArangoDB storage.
+
+
