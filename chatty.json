@@ -1,0 +1,12 @@
+{
+ "server": "127.0.0.1",
+ "listen": 8088,
+ "template": "chatty.json",
+ "db": {
+ 		"adapter": "arango",
+ 		"hostname": "127.0.0.1",
+ 		"name": "chat",
+ 		"user": "manager",
+ 		"pass": ""
+ }
+}

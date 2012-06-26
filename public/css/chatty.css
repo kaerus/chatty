@@ -1,0 +1,128 @@
+* {
+  font: normal 1em verdana, sans-serif;
+  margin: 0;
+  max-width: 50em;
+  padding:0;
+}
+
+#server {
+  display: none;
+}
+#select {
+  display: none;
+}
+section#chat {
+  color: #777;
+  margin: 0.5em;
+  padding: 0.25em;
+  background: #e9e9e9;
+  border: solid 1px #b3b3b3;
+  border-radius: 0.5em;
+}
+
+section#chat section#content {
+  height: 40em;
+  width: 40em;
+  padding: 0.25em;
+  margin-right: 0.25em;
+  margin-bottom: 0.25em;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+section#chat aside {
+  padding: 0.25em;
+  float: right;
+} 
+
+section#chat footer {
+  position: relative;
+  bottom: 0;
+  padding: 0.25em;
+}
+
+section#chat footer input {
+  border-radius: 0.5em;
+  height: 1.5em;
+  width: 50%;
+}
+
+article.chat {
+  padding: 0.5em;
+  border-radius: 0.5em;
+}
+
+article.chat:nth-child(odd) {
+  background: rgba(0,0,255,0.1);
+}
+
+article.chat:nth-child(even) {
+  background: rgba(255,255,255,0.3);
+}
+
+article.chat header time {
+  font-size: 0.5em;
+  float: right;
+}
+
+article.chat b {
+  padding-left: 0.25em;
+}
+
+article.chat mark {
+  color: #111;
+  padding: 0.2em;
+  margin-left: 0.25em;
+  margin-bottom: 0.25em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-radius: 0.5em;
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  width: 90%;
+}
+/*
+article.chat.private mark {
+  background: rgba(15,15,134,0.5);
+}
+
+article.chat.public mark {
+  background: rgba(15,134,15,0.5);
+}
+
+article.chat.self mark {
+  background: rgba(255,134,15,0.5);
+}
+*/
+article.chat.server mark {
+  border: 0;
+  color: #777;
+  background: transparent;
+  font-style: italic;
+  margin-left: 0;
+  padding-left: 0.25em;
+}
+
+
+article.chat.discarded mark {
+  text-decoration: line-through; 
+  background: transparent;
+  font-style: italic;
+  color: #777;
+}
+
+article.chat.discarded:after {
+  content: url('warning.png');
+}
+
+
+article.chat.pending mark {
+  background: transparent;
+  font-style: italic;
+}
+
+article.chat.pending:after {
+  content: url('spinner.gif');
+  padding-left: 0.25em;
+}
+
