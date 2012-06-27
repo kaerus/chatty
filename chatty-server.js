@@ -157,7 +157,7 @@ function handler (req, res) {
 var names = {};
 
 function storeMessage(timestamp,name,msg,type){
-  var path = "/_api/document?collection=" + config.db.name;
+  var path = "/_api/document?collection=" + config.db.name + "&createCollection=true";
   var data = {ch: "",timestamp:timestamp,name:name,msg:msg,type:type};
 	db.request.post(path,data,function(res){
   }).on('error',function(err){	
