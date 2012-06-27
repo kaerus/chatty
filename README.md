@@ -23,9 +23,9 @@ Client
 ------------------
 All client side resources are placed in the public directory.
 Chat commands recognized:
-* /nick <your nick> : (defaults to AnonXXX) - The nick is persisted in localstorage.
+* /nick \<your nick\> : Set a nickname (defaults to AnonXXX). The nick is persisted in localstorage.
 * /clear : clears the messages (locally).
-* /history <user> | <count> <port>: show history from specified user (or all by default).
+* /history \<user\> | \<count\> \<port\> : Show history for specified user (or all by default).
 
 
 How to contribute
