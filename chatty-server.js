@@ -38,8 +38,7 @@ var app = require('http').createServer(handler)
                 "version": "0.1.2"
     },
     show_help: function(){
-      console.log("Command line options:","arguments --server <hostname>" +
-	                                        " --port <server port>" +
+      console.log("Command line options:","arguments --server <hostname:port | socket>" +
 	                                        " --template <html template>");
 	    process.exit(0);
     },
@@ -93,9 +92,15 @@ var db = new arango.Connection(config.db).on('error',function(err){
 	console.log("DB Error:",util.inspect(err));
 });
 
-console.log("Waiting for requests on port", config.listen);
+console.log("Waiting for requests on %s", config.server);
+if(fs.existsSync(config.server)) {
+  app.listen(config.server);
+}
+else {
+  var srv = config.server.split(':');
+  app.listen(srv[1],srv[0]);
+}  
 
-app.listen(config.listen);
 function handler (req, res) {
   var u = url.parse(req.url,true);
   var filePath = './public' + u.pathname;
@@ -131,7 +136,7 @@ function handler (req, res) {
 	  res.end(banner + layout());
 	} else {
 	  // Respond with file
-    path.exists(filePath, function(exists) {
+    fs.exists(filePath, function(exists) {
       if (exists) {
         fs.readFile(filePath, function(error, content) {
           if (error) {
@@ -141,14 +146,14 @@ function handler (req, res) {
           }
           else {
             // Send file content to client
-	      res.writeHead(200,{"Content-Type":contentType });
-	      res.end(content);
-	  }        
-	}); 
+	          res.writeHead(200,{"Content-Type":contentType });
+	          res.end(content);
+	        }        
+	      }); 
       } else {
-     	 // File not found
-   	res.writeHead(404);
-    	res.end("not found");
+     	  // File not found
+   	    res.writeHead(404);
+    	  res.end("not found");
       }
     });
   }
