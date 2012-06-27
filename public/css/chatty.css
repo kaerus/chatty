@@ -123,7 +123,7 @@ article.chat.discarded mark {
 }
 
 article.chat.discarded:after {
-  content: url('warning.png');
+  content: url('/images/warning.png');
 }
 
 
@@ -133,7 +133,7 @@ article.chat.pending mark {
 }
 
 article.chat.pending:after {
-  content: url('spinner.gif');
+  content: url('/images/spinner.gif');
   padding-left: 0.25em;
 }
 
