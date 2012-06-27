@@ -1,7 +1,6 @@
 * {
   font: normal 1em verdana, sans-serif;
   margin: 0;
-  max-width: 50em;
   padding:0;
 }
 
@@ -21,8 +20,8 @@ section#chat {
 }
 
 section#chat section#content {
-  height: 40em;
-  width: 40em;
+  height: 20em;
+  width: 30em;
   padding: 0.25em;
   margin-right: 0.25em;
   margin-bottom: 0.25em;
