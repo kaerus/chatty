@@ -83,6 +83,11 @@ process.on('exit', function(code,signal){
 console.log("%s configuration:\n", config.name,util.inspect(config) );
 
 var layout = template.loadTemplate(config.template);
+var banner = "<!--\n";
+banner += " Chatty-client v" + config.version + " Copyright (c) Kaerus 2012, by Anders Elo <anders @ kaerus com>.\n";
+banner += " MIT licensed, feel free to use, share and modify as long as this notice is included.\n";
+banner += " Developers and users should send contributions to <http://github.com/kaerus/chatty>.\n";
+banner += "-->\n";
 
 var db = new arango.Connection(config.db).on('error',function(err){
 	console.log("DB Error:",util.inspect(err));
@@ -123,7 +128,7 @@ function handler (req, res) {
   if(filePath === './public/') {
     // Respond with html template
 	  res.writeHead(200);
-	  res.end(layout({server:config.server+':'+config.listen}));
+	  res.end(banner + layout());
 	} else {
 	  // Respond with file
     path.exists(filePath, function(exists) {
