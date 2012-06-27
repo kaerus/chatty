@@ -1,8 +1,8 @@
 jQuery(document).ready(function($){
   var server = $("#server").text();
   
-  console.log("Connecting to server:", server);
-  var socket = io.connect("192.168.0.100:8088");
+  console.log("Connecting to chatty server:", location.host);
+  var socket = io.connect(location.host);
   
   var _storage = (function() {
     if( typeof localStorage === 'object' ) 
