@@ -6,19 +6,20 @@ It consist of a node.js server (with an arangodb backend) and a html5/javascript
 __________________________________________________________________________________________
 Install
 -------
-To install run
+As a prerequisite you need to have [node.js](http://nodejs.org/#download).    
+
+Then you need to run some commands in your terminal.
 ```
 npm install git://github.com/kaerus/chatty.git
 cd chatty
-node chatty-server
+node chatty-server.js
 ```
-You need to have [node.js](http://nodejs.org/#download) for that to work.  
 After you have done this you should be able to access the [chat-server](http://127.0.0.1:8088).
 
 Database
 --------
-To be able to run the chat-server in Full-Feature-Mode(tm) you need to have a database.
-For that you also need to [install ArangoDB](/triAGENS/ArangoDB/).  
+To be able to run the chat-server in Full-Feature-Mode(tm) you also need to have a database.
+For that you need to [install ArangoDB](/triAGENS/ArangoDB/).  
 
 To get arango up and running you need to git, compile and install it 
 ```
