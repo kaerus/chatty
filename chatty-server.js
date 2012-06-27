@@ -157,7 +157,7 @@ function handler (req, res) {
 var names = {};
 
 function storeMessage(timestamp,name,msg,type){
-  var path = "/_api/document?collection=chat&createCollection=create";
+  var path = "/_api/document?collection=" + config.db.name;
   var data = {ch: "",timestamp:timestamp,name:name,msg:msg,type:type};
 	db.request.post(path,data,function(res){
   }).on('error',function(err){	
@@ -229,7 +229,7 @@ io.sockets.on('connection', function (socket) {
 			{query: "FOR u IN @@collection " + filter + 
 				" LIMIT " + parseInt(offset) + " , " + parseInt(count) +
 				" SORT u.timestamp DESC RETURN [u.timestamp,u.name,u.msg,u.type]", 
-			 bindVars: {"@collection": "chat"}}, function(ret) {
+			 bindVars: {"@collection": db.name}}, function(ret) {
 	 	if(ret.result.length > 0)
 	    		socket.emit("history", ret.result);
 	  }).on('error',function(err){

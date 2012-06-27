@@ -5,7 +5,8 @@
  "db": {
  		"adapter": "arango",
  		"hostname": "127.0.0.1",
- 		"name": "chat",
+ 		"name": "chatty",
+ 		"size": 10485760,
  		"user": "manager",
  		"pass": ""
  }
