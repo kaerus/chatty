@@ -19,9 +19,14 @@ Configuration
 -------------
 The chatty.json configuration file should be simple and self explanatory.  
   
-Styling the client
+Client
 ------------------
-Client side resources are placed in the public directory.
+All client side resources are placed in the public directory.
+Chat commands recognized:
+* /nick <your nick> : (defaults to AnonXXX) - The nick is persisted in localstorage.
+* /clear : clears the messages (locally).
+* /history <user> | <count> <port>: show history from specified user (or all by default).
+
 
 How to contribute
 -----------------
