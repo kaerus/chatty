@@ -21,11 +21,11 @@ The chatty.json configuration file should be simple and self explanatory.
   
 Client
 ------------------
-All client side resources are placed in the public directory.
+All client side resources are placed in the public directory.  
 Chat commands recognized:
 * /nick \<your nick\> : Set a nickname (defaults to AnonXXX). The nick is persisted in localstorage.
 * /clear : clears the messages (locally).
-* /history \<user\> | \<count\> \<port\> : Show history for specified user (or all by default).
+* /history \<user\> | \<count\> | \<offset\> : Shows \<count\> number of lines history from \<offset\> for specified \<user\> (or all by default).
 
 
 How to contribute
