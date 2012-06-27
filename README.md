@@ -13,7 +13,7 @@ npm install git://github.com/kaerus/chatty.git
 
 Database
 --------
-You need to [install ArangoDB](https://github.com/triAGENS/ArangoDB).
+You need to [install ArangoDB](/triAGENS/ArangoDB/).
 
 Configuration
 -------------
@@ -25,9 +25,9 @@ Client side resources are placed in the public directory.
 
 How to contribute
 -----------------
-* Send your contributions as [pull requests](/pulls/)
-* Write documentation on the project [wiki](/wiki/)
-* Repost bugs, feature requests & suggestions as [issues](/issues/) 
+* Send your contributions as [pull requests](/kaerus/pulls/)
+* Write documentation on the project [wiki](/kaerus/wiki/)
+* Repost bugs, feature requests & suggestions as [issues](/kaerus/issues/) 
 
 
 
