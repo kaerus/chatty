@@ -23,14 +23,16 @@ jQuery(document).ready(function($){
       _storage.nickname = val;
     }
   };  
-  
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   function appendMessage(timestamp, name, message, type, prepend){
     var t = timestamp ? new Date(timestamp) : new Date();
     var time = t.toTimeString().split(' ')[0];
     var datetime = t.toISOString();
+    var month = months[t.getMonth()];
     var html = '<article id="'+timestamp+'" class="chat '+type+'">' +
-               '<header><time pubdate datetime="'+datetime+'">'+time+'</time></header>' +
-               (name ? '<b>'+unescape(name)+'</b>' : '')+
+               '<header><time pubdate datetime="'+datetime+'">' +
+               t.getDay()+' '+month+' '+time+'</time></header>' +
+               (name ? '<b>'+unescape(name)+'</b>' : '') +
                '<mark>'+unescape(message)+ '</mark>' +
                '</article>';
     
