@@ -10,10 +10,22 @@ To install run
 ```
 npm install git://github.com/kaerus/chatty.git
 ```
+You need to have [node.js](http://nodejs.org/#download) for that to work.  
 
 Database
 --------
-You need to [install ArangoDB](/triAGENS/ArangoDB/) and create a collection (db.name) to use.
+You also need [ArangoDB](/triAGENS/ArangoDB/) and create a collection (db.name) to use.  
+
+To get arango up and running you need to grab, compile and install 
+```
+git clone git://github.com/triaAGENS/ArangoDB.git
+cd ArangoDB
+./configure
+make
+sudo make install
+/usr/local/sbin/arangod
+```
+For additional information please consult the [arangodb](/triAGENS/ArangoDB/) project.
 
 Configuration
 -------------
