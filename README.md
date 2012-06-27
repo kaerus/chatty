@@ -25,9 +25,9 @@ Client side resources are placed in the public directory.
 
 How to contribute
 -----------------
-* Send your contributions as [pull requests](/kaerus/pulls/)
-* Write documentation on the project [wiki](/kaerus/wiki/)
-* Repost bugs, feature requests & suggestions as [issues](/kaerus/issues/) 
+* Send your contributions as [pull requests](/kaerus/chatty/pulls/)
+* Write documentation on the project [wiki](/kaerus/chatty/wiki/)
+* Repost bugs, feature requests & suggestions as [issues](/kaerus/chatty/issues/) 
 
 
 
