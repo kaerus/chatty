@@ -1,12 +1,9 @@
 * {
   font: normal 1em verdana, sans-serif;
   margin: 0;
-  padding:0;
+  padding: 0;
 }
 
-#select {
-  display: none;
-}
 section#chat {
   color: #777;
   margin: 0.5em;
