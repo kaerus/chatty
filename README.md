@@ -6,15 +6,16 @@ It consist of a node.js server (with an arangodb backend) and a html5/javascript
 __________________________________________________________________________________________
 Install
 -------
-As a prerequisite you need to have [node.js](http://nodejs.org/#download).    
+As a prerequisite you need to have [node.js](http://nodejs.org/#download) and [git](http://git-scm.com/book/en/Getting-Started-Installing-Git).    
 
 Then you need to run some commands in your terminal.
 ```
-npm install git://github.com/kaerus/chatty.git
+git clone git://github.com/kaerus/chatty.git
 cd chatty
+npm install 
 node chatty-server.js
 ```
-After you have done this you should be able to access the [chat-server](http://127.0.0.1:8088).
+After you have done that you should be able to access the [chat-server](http://127.0.0.1:8088).
 
 Database
 --------
