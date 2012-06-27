@@ -43,7 +43,8 @@ var app = require('http').createServer(handler)
 	                                        " --template <html template>");
 	    process.exit(0);
     },
-    get: function(){
+    get: function(conf){
+      this._config.file = conf;
 	    /* parse command line options */
       for( var i = 0, option = process.argv; option[i]; i++) {
         switch(option[i]) {
@@ -73,7 +74,7 @@ var app = require('http').createServer(handler)
 	    }
 	    return this._config;
     }
-}.get();
+}.get('chatty.json');
 
 process.on('exit', function(code,signal){
 	console.log("Process uptime %s, exit",process.uptime(), code ? code : "", signal ? signal : "" );
