@@ -8,21 +8,20 @@ Install
 -------
 As a prerequisite you need to have [node.js](http://nodejs.org/#download) and [git](http://git-scm.com/book/en/Getting-Started-Installing-Git).    
 
-Then you need to run some commands in your terminal.
+Then run some commands in your terminal.
 ```
 git clone git://github.com/kaerus/chatty.git
 cd chatty
 npm install 
-node chatty-server.js
+node chatty-server
 ```
 After you have done that you should be able to access the [chat-server](http://127.0.0.1:8088).
 
 Database
 --------
-To be able to run the chat-server in Full-Feature-Mode(tm) you also need to have a database.
-For that you need to [install ArangoDB](/triAGENS/ArangoDB/).  
+To run the chat-server in Full-Feature-Mode(tm) you have to [install ArangoDB](/triAGENS/ArangoDB/).   
 
-To get arango up and running you need to git, compile and install it 
+Clone ArangoDB, compile and install:  
 ```
 git clone git://github.com/triaAGENS/ArangoDB.git
 cd ArangoDB
