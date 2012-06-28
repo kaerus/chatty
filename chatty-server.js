@@ -30,7 +30,7 @@ var app = require('http').createServer(handler)
   , util = require('util')
   , path = require('path')
   , extend = require('node.extend')
-  , arango = require('arango')
+  , arango = require('arango.client')
   , template = require('./lib/template')
   , config = {
     _config: {  "app": "chatty",

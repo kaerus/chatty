@@ -15,7 +15,7 @@
   },
   "dependencies": {"node.extend":"1.0.0",
 		   "socket.io":"0.9.6",
-		   "arango-client":"git://github.com/kaerus/arango-client.git"},
+		   "arango.client":"git://github.com/kaerus/arango-client.git"},
   "devDependencies": {},
   "repository": {
     "type": "git",
