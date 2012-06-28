@@ -40,7 +40,6 @@ section#chat section#content {
   height: 32em;
   width: 32em;
   padding: 0.25em;
-  margin-right: 0.25em;
   margin-bottom: 0.25em;
   overflow: auto;
   overflow-x: hidden;
@@ -51,7 +50,6 @@ section#chat aside {
   height: 32em;
   margin-top: 0.25em;
   margin-right: 0.25em;
-  margin-left: 0;
   padding: 0.25em;
   background: rgba(222,222,222,0.1);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, 0.25);
@@ -59,6 +57,7 @@ section#chat aside {
   border-radius: 0.3em;
   overflow: hidden;
 } 
+
 section#chat aside header h2{
   padding-left: 0.25em;
   font-size: 1em;
@@ -95,7 +94,6 @@ section#chat footer input:focus {
 }
 
 article.chat {
-  margin-right: 0.25em;
   margin-bottom: 0.2em;
   padding: 0.5em;
   border-radius: 0.3em;
@@ -131,19 +129,7 @@ article.chat mark {
   background: rgba(255,255,255,0.2);
   width: 90%;
 }
-/*
-article.chat.private mark {
-  background: rgba(15,15,134,0.5);
-}
 
-article.chat.public mark {
-  background: rgba(15,134,15,0.5);
-}
-
-article.chat.self mark {
-  background: rgba(255,134,15,0.5);
-}
-*/
 article.chat.server mark {
   border: 0;
   color: #777;
@@ -152,7 +138,6 @@ article.chat.server mark {
   margin-left: 0;
   padding-left: 0.25em;
 }
-
 
 article.chat.discarded mark {
   text-decoration: line-through; 
@@ -165,7 +150,6 @@ article.chat.discarded:after {
   content: url('/images/warning.png');
 }
 
-
 article.chat.pending mark {
   background: transparent;
   font-style: italic;
@@ -175,4 +159,3 @@ article.chat.pending:after {
   content: url('/images/spinner.gif');
   padding-left: 0.25em;
 }
-
