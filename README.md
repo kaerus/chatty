@@ -21,7 +21,7 @@ After you have done that you should be able to access the [chat-server](http://1
 
 Database
 --------
-To run the chat-server in Full-Feature-Mode(tm) you have to [install ArangoDB](/triAGENS/ArangoDB/).   
+The database is optional but in order to run the server in Full-Feature-Mode(tm) you have to [install ArangoDB](/triAGENS/ArangoDB/).   
 
 Clone ArangoDB, compile and install:  
 ```
