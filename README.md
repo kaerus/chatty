@@ -1,7 +1,9 @@
 Chatty
 ======
 
-Chatty is an experimental chat server for exploring socket.io and ArangoDB.  
+Chatty is an experimental chat server and client using socket.io and ArangoDB.  
+![Screenshot from client](http://www.kaerus.com/images/chatty.png)    
+
 It consist of a node.js server (with an arangodb backend) and a html5/javascript client.
 __________________________________________________________________________________________
 Install
