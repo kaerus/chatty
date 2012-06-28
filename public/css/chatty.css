@@ -55,7 +55,7 @@ section#chat aside {
   background: rgba(222,222,222,0.1);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, .25), 0 1px 0 rgba(255, 255, 255, 0.25);
   float: right;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   overflow: hidden;
 } 
 section#chat aside header h2{
@@ -95,8 +95,9 @@ section#chat footer input:focus {
 
 article.chat {
   margin-right: 0.25em;
+  margin-bottom: 0.2em;
   padding: 0.5em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
 }
 
 article.chat:nth-child(odd) {
@@ -118,7 +119,7 @@ article.chat b {
 }
 
 article.chat mark {
-  color: #111;
+  color: #333;
   padding: 0.2em;
   margin-left: 0.25em;
   margin-bottom: 0.25em;
