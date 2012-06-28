@@ -14,7 +14,7 @@ Then run some commands in your terminal.
 ```
 git clone git://github.com/kaerus/chatty.git
 cd chatty
-npm install 
+make 
 node chatty-server
 ```
 After you have done that you should be able to access the [chat-server](http://127.0.0.1:8088).
