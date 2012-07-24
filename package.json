@@ -1,6 +1,6 @@
 {
   "name": "chatty",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Chat server and html5 client based on socket.io and ArangoDB storage",
   "keywords": [
     "chat",

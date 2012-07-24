@@ -68,6 +68,7 @@ var app = require('http').createServer(handler)
 		    extend(this._config,JSON.parse(fs.readFileSync(this._config.file, 'utf8'))); 
 	    }	catch(err) { 
 		    if(process.argv.length < 3){
+		      console.log(err);
 	 		    this.show_help();
 		    } 
 	    }
@@ -88,9 +89,7 @@ banner += " MIT licensed, feel free to use, share and modify as long as this not
 banner += " Developers and users should send contributions to <http://github.com/kaerus/chatty>.\n";
 banner += "-->\n";
 
-var db = new arango.Connection(config.db).on('error',function(err){
-	console.log("DB Error:",util.inspect(err));
-});
+var db = new arango.Connection(config.db);
 
 console.log("Waiting for requests on %s", config.server);
 if(fs.existsSync(config.server)) {
@@ -162,11 +161,9 @@ function handler (req, res) {
 var names = {};
 
 function storeMessage(timestamp,name,msg,type){
-  var path = "/_api/document?collection=" + config.db.name + "&createCollection=true";
   var data = {ch: "",timestamp:timestamp,name:name,msg:msg,type:type};
-	db.request.post(path,data,function(res){
-  }).on('error',function(err){	
-      console.log("Store error:", util.inspect(err) );
+	db.document.create(data,function(err,ret){
+    if(err) console.log("Store error:", util.inspect(ret) );
   });
         						
 }
@@ -230,15 +227,13 @@ io.sockets.on('connection', function (socket) {
   /* return (user) history */
   socket.on('get history', function(name,count,offset){
     var filter = name ? "FILTER u.name == '" + escape(name) +"'" : "";
-	  db.request.post("/_api/cursor",
-			{query: "FOR u IN @@collection " + filter + 
+	  db.post("/_api/cursor", {query: "FOR u IN @@collection " + filter + 
 				" LIMIT " + parseInt(offset) + " , " + parseInt(count) +
 				" SORT u.timestamp DESC RETURN [u.timestamp,u.name,u.msg,u.type]", 
-			 bindVars: {"@collection": db.name}}, function(ret) {
-	 	if(ret.result.length > 0)
-	    		socket.emit("history", ret.result);
-	  }).on('error',function(err){
-	    util.log("history error:", util.inspect(err) );
+			 bindVars: {"@collection": db.config.name}}, function(err,ret) {
+			 if(err) console.log("db err(%s): ", err,ret);
+	 	   else if(ret.result.length > 0)
+	      socket.emit("history", ret.result);
 	  });	 
   });
 });
