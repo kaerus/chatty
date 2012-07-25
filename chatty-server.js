@@ -34,17 +34,17 @@ var app = require('http').createServer(handler)
   , template = require('./lib/template')
   , config = {
     _config: {  "app": "chatty",
-                "name":	"Chatty server",
+                "name": "Chatty server",
                 "version": "0.1.2"
     },
     show_help: function(){
       console.log("Command line options:","arguments --server <hostname:port | socket>" +
-	                                        " --template <html template>");
-	    process.exit(0);
+                                            " --template <html template>");
+        process.exit(0);
     },
     get: function(conf){
       this._config.file = conf;
-	    /* parse command line options */
+        /* parse command line options */
       for( var i = 0, option = process.argv; option[i]; i++) {
         switch(option[i]) {
           case '--help':
@@ -65,19 +65,19 @@ var app = require('http').createServer(handler)
         }
       }
        try { 
-		    extend(this._config,JSON.parse(fs.readFileSync(this._config.file, 'utf8'))); 
-	    }	catch(err) { 
-		    if(process.argv.length < 3){
-		      console.log(err);
-	 		    this.show_help();
-		    } 
-	    }
-	    return this._config;
+            extend(this._config,JSON.parse(fs.readFileSync(this._config.file, 'utf8'))); 
+        }   catch(err) { 
+            if(process.argv.length < 3){
+              console.log(err);
+                this.show_help();
+            } 
+        }
+        return this._config;
     }
 }.get('chatty.json');
 
 process.on('exit', function(code,signal){
-	console.log("Process uptime %s, exit",process.uptime(), code ? code : "", signal ? signal : "" );
+    console.log("Process uptime %s, exit",process.uptime(), code ? code : "", signal ? signal : "" );
 });
 
 console.log("%s configuration:\n", config.name,util.inspect(config) );
@@ -94,8 +94,7 @@ var db = new arango.Connection(config.db);
 console.log("Waiting for requests on %s", config.server);
 if(fs.existsSync(config.server)) {
   app.listen(config.server);
-}
-else {
+} else {
   var srv = config.server.split(':');
   app.listen(srv[1],srv[0]);
 }  
@@ -130,29 +129,24 @@ function handler (req, res) {
             break;
   }
   if(filePath === './public/') {
-    // Respond with html template
-	  res.writeHead(200);
-	  res.end(banner + layout());
-	} else {
-	  // Respond with file
+      res.writeHead(200);
+      res.end(banner + layout());
+    } else {
     fs.exists(filePath, function(exists) {
       if (exists) {
         fs.readFile(filePath, function(error, content) {
           if (error) {
-            // File read error
             res.writeHead(500);
             res.end();
           }
           else {
-            // Send file content to client
-	          res.writeHead(200,{"Content-Type":contentType });
-	          res.end(content);
-	        }        
-	      }); 
+              res.writeHead(200,{"Content-Type":contentType });
+              res.end(content);
+            }        
+          }); 
       } else {
-     	  // File not found
-   	    res.writeHead(404);
-    	  res.end("not found");
+        res.writeHead(404);
+          res.end("not found");
       }
     });
   }
@@ -162,10 +156,10 @@ var names = {};
 
 function storeMessage(timestamp,name,msg,type){
   var data = {ch: "",timestamp:timestamp,name:name,msg:msg,type:type};
-	db.document.create(data,function(err,ret){
+    db.document.create(data,function(err,ret){
     if(err) console.log("Store error:", util.inspect(ret) );
   });
-        						
+                                
 }
 
 function broadcast(msg,timestamp,name,data,type){
@@ -174,7 +168,7 @@ function broadcast(msg,timestamp,name,data,type){
 }
 
 io.sockets.on('connection', function (socket) {
-     	
+        
   var server_msg = config.name +' v '+ config.version;               
   socket.emit('server', server_msg);
  
@@ -195,8 +189,8 @@ io.sockets.on('connection', function (socket) {
         socket.emit('nick taken',name);
     } else {
       socket.get('nickname',function(err,oldname){
-	if (oldname) socket.broadcast.emit("user changed nick", timestamp, oldname, name);
-	else socket.broadcast.emit("user joined", timestamp, name);	
+    if (oldname) socket.broadcast.emit("user changed nick", timestamp, oldname, name);
+    else socket.broadcast.emit("user joined", timestamp, name); 
         socket.emit('nick ready',timestamp,name);
         socket.set('nickname',name);
         if(oldname) delete names[oldname];
@@ -212,13 +206,13 @@ io.sockets.on('connection', function (socket) {
       var now = new Date().getTime();
       if( now - 10000 < timestamp ) {
         broadcast.call(socket,"msg", timestamp, name, message, "public");
-	      socket.emit("received",timestamp);
+          socket.emit("received",timestamp);
       } else {   
         socket.emit("discarded",timestamp);
-	    }
+        }
     });
   });
-  
+
   /* return list of names */
   socket.on('get users', function(){
     socket.emit('users',Object.keys(names));
@@ -227,13 +221,13 @@ io.sockets.on('connection', function (socket) {
   /* return (user) history */
   socket.on('get history', function(name,count,offset){
     var filter = name ? "FILTER u.name == '" + escape(name) +"'" : "";
-	  db.post("/_api/cursor", {query: "FOR u IN @@collection " + filter + 
-				" LIMIT " + parseInt(offset) + " , " + parseInt(count) +
-				" SORT u.timestamp DESC RETURN [u.timestamp,u.name,u.msg,u.type]", 
-			 bindVars: {"@collection": db.config.name}}, function(err,ret) {
-			 if(err) console.log("db err(%s): ", err,ret);
-	 	   else if(ret.result.length > 0)
-	      socket.emit("history", ret.result);
-	  });	 
+      db.post("/_api/cursor", {query: "FOR u IN @@collection " + filter + 
+                " LIMIT " + parseInt(offset) + " , " + parseInt(count) +
+                " SORT u.timestamp DESC RETURN [u.timestamp,u.name,u.msg,u.type]", 
+             bindVars: {"@collection": db.config.name}}, function(err,ret) {
+             if(err) console.log("db err(%s): ", err,ret);
+           else if(ret.result.length > 0)
+          socket.emit("history", ret.result);
+      });    
   });
 });
